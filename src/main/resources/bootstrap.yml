@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: test-service
+  profiles:
+    active: dev
+
+# change those config in prod ?
+eureka:
+  instance:
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
+
+---
+spring:
+  profiles: dev
+
+server:
+  port: 9001
+        
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka:password123@localhost:8761/eureka/
+      
+---
+spring:
+  profiles: docker
+
+server:
+  port: ${SERVICE_PORT}
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: ${REGISTRY_URL}
