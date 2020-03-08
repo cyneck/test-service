@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: test-service
-        image: registry.cn-hangzhou.aliyuncs.com/cyneck/test-service:2020-03-07-00-59-32
+        image: registry.cn-hangzhou.aliyuncs.com/cyneck/test-service:2020-03-08-11-05-44
         ports:
         - containerPort: 9001
         env:
