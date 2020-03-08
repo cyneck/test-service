@@ -50,4 +50,4 @@ spec:
     name: http
     port: 9001 #TODO: choose an unique port on each node to avoid port conflict
     targetPort: 8080
-  type: LoadBalancer
+  type: NodePort

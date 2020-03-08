@@ -22,12 +22,16 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-lb
+  name: nginx-lb-svc
   namespace: default
+  labels:
+    app: test-service-svc
 spec:
-  type: LoadBalancer
-  ports:
-    - port: 8090
-      targetPort: 80
   selector:
     app: nginx-lb
+  ports:
+    - protocol: TCP
+      name: http
+      port: 8090
+      targetPort: 80
+  type: NodePort
