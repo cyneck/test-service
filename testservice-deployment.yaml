@@ -16,9 +16,9 @@ spec:
     spec:
       containers:
       - name: test-service
-        image: registry.cn-hangzhou.aliyuncs.com/cyneck/test-service:2020-03-08-11-05-44
+        image: registry.cn-hangzhou.aliyuncs.com/cyneck/test-service:2020-03-08-11-16-35
         ports:
-        - containerPort: 9001
+        - containerPort: 8080
         env:
           - name: JAVA_OPTS
             value: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5011
@@ -29,7 +29,7 @@ spec:
           - name: SERVICE_HOST
             value: test-service
           - name: SERVICE_PORT
-            value: "9001"
+            value: "8080"
       # create docker registry secrects with:
       imagePullSecrets:          #Comment out to enable specific image pull secret
         - name: image-repo-key    # repleace it wity your specific docker registry secret
@@ -49,5 +49,5 @@ spec:
   - protocol: TCP
     name: http
     port: 9001 #TODO: choose an unique port on each node to avoid port conflict
-    targetPort: 9001
+    targetPort: 8080
   type: LoadBalancer
